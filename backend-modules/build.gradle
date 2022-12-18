@@ -1,7 +1,7 @@
 dependencies {
     api project(':backend-modules:blockfrost')
-    api project(':backend-modules:koios')
-    api project(':backend-modules:ogmios')
+    //api project(':backend-modules:koios')
+    //api project(':backend-modules:ogmios')
 }
 
 publishing {

@@ -20,12 +20,12 @@ include 'cip:cip30'
 include 'backend'
 include 'backend-modules'
 include 'backend-modules:blockfrost'
-include 'backend-modules:koios'
-include 'backend-modules:ogmios'
+//include 'backend-modules:koios'
+//include 'backend-modules:ogmios'
 include 'integration-test'
 
 
 //Ogmios backend
-project(':ogmios').projectDir = file('backend-modules/ogmios')
-project(":ogmios").name = "cardano-client-backend-ogmios"
+//project(':ogmios').projectDir = file('backend-modules/ogmios')
+//project(":ogmios").name = "cardano-client-backend-ogmios"
 
