@@ -25,4 +25,7 @@ include 'backend-modules:ogmios'
 include 'integration-test'
 
 
+//Ogmios backend
+project(':ogmios').projectDir = file('backend-modules/ogmios')
+project(":ogmios").name = "cardano-client-backend-ogmios"
 

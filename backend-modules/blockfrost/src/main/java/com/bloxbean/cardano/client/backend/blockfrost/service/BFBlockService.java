@@ -11,7 +11,7 @@ import retrofit2.Response;
 import java.io.IOException;
 import java.math.BigInteger;
 
-public class BFBlockService extends BFBaseService implements BlockService {
+public class BFBlockService extends BFBaseService implements BlockService  {
 
     private BlockApi blockApi;
 
@@ -68,4 +68,38 @@ public class BFBlockService extends BFBaseService implements BlockService {
             throw new ApiException("Error getting block by number", e);
         }
     }
+
+    @Override
+    public Result<String[]> getTransactionHashesByBlockHash(String blockHash, Integer count, Integer page, String order) throws ApiException {
+        Call<String[]> blockCall = blockApi.getTransactionHashesByBlockHash(getProjectId(), blockHash, count, page, order);
+
+        try {
+            Response<String[]> response = blockCall.execute();
+            if(response.isSuccessful()) {
+                return Result.success(response.toString()).withValue(response.body()).code(response.code());
+            } else {
+                return Result.error(response.errorBody().string()).code(response.code());
+            }
+        } catch (IOException e) {
+            throw new ApiException("Error getting block by hash", e);
+        }
+    }
+
+    @Override
+    public Result<String[]> getTransactionHashesByBlockNumber(BigInteger blockNumber, Integer count, Integer page, String order) throws ApiException {
+        Call<String[]> blockCall = blockApi.getTransactionHashesByBlockNumber(getProjectId(), blockNumber, count, page, order);
+
+        try {
+            Response<String[]> response = blockCall.execute();
+            if(response.isSuccessful()){
+                return Result.success(response.toString()).withValue(response.body()).code(response.code());
+            } else {
+                return Result.error(response.errorBody().string()).code(response.code());
+            }
+        } catch (IOException e) {
+            throw new ApiException("Error getting block by number", e);
+        }
+    }
+
+
 }
